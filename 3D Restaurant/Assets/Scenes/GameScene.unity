@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 119036674}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,6 +412,12 @@ PrefabInstance:
     - target: {fileID: 5275975724347766963, guid: d1942dd2fce859c469e31513fb4b697b,
         type: 3}
       propertyPath: kitchenObjectScriptable
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b3a0827a9ec02e47adf3899aaec2a56,
+        type: 2}
+    - target: {fileID: 5275975724347766963, guid: d1942dd2fce859c469e31513fb4b697b,
+        type: 3}
+      propertyPath: cutKitchenObjectScriptable
       value: 
       objectReference: {fileID: 11400000, guid: 6b3a0827a9ec02e47adf3899aaec2a56,
         type: 2}
