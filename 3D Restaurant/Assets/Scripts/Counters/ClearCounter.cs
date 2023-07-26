@@ -21,5 +21,5 @@ public class ClearCounter : BaseCounter
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }
-    } 
+    }
 }
