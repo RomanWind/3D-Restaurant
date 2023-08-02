@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
+    public event EventHandler OnRecipeSpawned;
+    public event EventHandler OnRecipeCompleted;
+
     public static DeliveryManager Instance {get; private set;}
 
     [SerializeField] private RecipeListScriptable recipeListScriptable;
@@ -26,9 +30,9 @@ public class DeliveryManager : MonoBehaviour
 
             if(waitingRecipesScriptableList.Count < waitingRecipesMax ) 
             {
-                RecipeScriptable waitingRecipeScriptable = recipeListScriptable.recipeScriptableList[Random.Range(0, recipeListScriptable.recipeScriptableList.Count)];
+                RecipeScriptable waitingRecipeScriptable = recipeListScriptable.recipeScriptableList[UnityEngine.Random.Range(0, recipeListScriptable.recipeScriptableList.Count)];
                 waitingRecipesScriptableList.Add(waitingRecipeScriptable);
-                Debug.Log(waitingRecipeScriptable.recipeName);
+                OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
             }
         }
     }
@@ -62,11 +66,13 @@ public class DeliveryManager : MonoBehaviour
 
                 if(plateContentMatchesRecipe)
                 {
-                    Debug.Log("CorrectRecipe");
                     waitingRecipesScriptableList.RemoveAt(i);
+                    OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
                     return;
                 }
             }
         }
     }
+
+    public List<RecipeScriptable> GetWaitingRecipeScriptableList() => waitingRecipesScriptableList;
 }
